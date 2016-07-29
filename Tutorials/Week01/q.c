@@ -13,6 +13,9 @@ void scanf(void* str, int y) { // void* is some random pointer to *something*
 // O(n)
 int main(int argc, char* argv[]) {
 
+  if () x++;
+
+
   char* y[100] = { '0', '1', 'h', 'i', '\0', '.', '.' };
 
   for (int i = 0; i < 100; ++i) { // Goes through n times
