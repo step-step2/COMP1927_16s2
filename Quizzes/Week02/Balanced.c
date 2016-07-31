@@ -11,8 +11,10 @@
 // Determine whether it is a valid combination of brackets
 // i.e. for string [}, return 0
 //      for string (), return 1
-//  You cannot assume any particular size of the string,
-//  i.e. for all you know, it is infinite or empty =)
+// Make sure to assert that all characters in the string are indeed
+// valid (use the validChar method)
+// You cannot assume any particular size of the string,
+// i.e. for all you know, it is infinite or empty =)
 int isValid(char* str) {
   // Answer the question here
   return 0;

@@ -1,5 +1,5 @@
 /**
- * This is where some cool tests are run
+ * This is where everything starts
  * Don't touch this bit =)
  */
 
@@ -10,7 +10,6 @@
 void printUsage();
 
 int main(int argc, char* argv[]) {
-
   if (argc != 1) {
     printUsage();
     exit(1);
@@ -18,12 +17,11 @@ int main(int argc, char* argv[]) {
 
   char my_brackets[128];
   scanf("%s", my_brackets);
-  printf("%s\n", my_brackets);
 
   if (isValid(my_brackets)) {
-    printf("valid");
+    printf("valid\n");
   } else {
-    printf("invalid");
+    printf("invalid\n");
   }
 
   return 0;
