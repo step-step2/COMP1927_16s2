@@ -1,3 +1,9 @@
 Welcome to 1927!
 
-This is where i'll be putting up all the work I do during tutes, and any fun things I can think of
+This is where I'll be putting up all the work I do during tutes, and any fun things I can think of
+
+To get everything here, run this inside the terminal:
+git clone https://github.com/StevenStrij/COMP1927_16s2 .
+cd COMP1927_16s2
+
+Navigate where you want from there
