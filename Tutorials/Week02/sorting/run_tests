@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# /dev/null is just a file of 0's
+# Basically clearing the results file
+cat /dev/null > results
+
+for i in 1000 2000 4000 8000 16000 32000
+do
+  # Get the time of how long bubble takes
+  # &> means get both of stdout and stderr
+  # Send that to /dev/null (think of that like a black hole)
+  # BUT, 2>> means append the stderr to results file
+  (time ./bubble $i R) &> /dev/null 2>> results
+done;
