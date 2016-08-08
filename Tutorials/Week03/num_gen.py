@@ -14,6 +14,6 @@ if sys.argv[2] == "R":
 elif sys.argv[2] == "TR":
     print("\n".join(str(random.randint(0, maxN)) for i in range(numV)))
 elif sys.argv[2] == "A":
-    print("\n".join(str(i) for i in range(numV)))
+    print("\n".join(str(i) for i in range(1, numV + 1, 1)))
 elif sys.argv[2] == "D":
     print("\n".join(str(i) for i in range(numV, 0, -1)))
