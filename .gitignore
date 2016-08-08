@@ -1,2 +1,6 @@
 SneakySolutions/Week*
 .ropeproject
+.ycm_extra_conf.py
+.color_coded
+__pycache__
+*.o
