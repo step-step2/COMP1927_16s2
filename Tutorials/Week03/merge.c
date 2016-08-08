@@ -26,7 +26,7 @@ void mergeSort(int* arr, int lo, int hi)  {
   // [2, 3, 6, 10] we'll call this subset A
   // [5, 8, 9, 9 ] we'll call this subset B
   // With p = 0, i = 0, j = 4
-  for (i = lo, j = mid; i < mid && j < hi; ++p) {
+  for (i = lo, j = mid; i < mid && j <= hi; ++p) {
     // Subset A has the smaller value
     // Put it into merged, and increment our pos
     if (arr[i] < arr[j]) {
@@ -45,7 +45,7 @@ void mergeSort(int* arr, int lo, int hi)  {
   // Go over the remaining list, append it to merged
   // One of these loops will just be skipped
   for (;i < mid; ++p, ++i) merged[p] = arr[i];
-  for (;j < hi; ++p, ++j) merged[p] = arr[j];
+  for (;j <= hi; ++p, ++j) merged[p] = arr[j];
 
   // Put the sorted result back into our array
   for (i = lo, p = 0; p < hi - lo + 1; ++i, ++p) arr[i] = merged[p];

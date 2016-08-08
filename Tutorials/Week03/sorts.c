@@ -28,6 +28,8 @@ int main(int argc, char* argv[]) {
   
   sorts[sort](arr, numVals);
 
+  for (int i = 0; i < numVals; ++i) printf("%d\n", arr[i]);
+
   return 0;
 }
 
