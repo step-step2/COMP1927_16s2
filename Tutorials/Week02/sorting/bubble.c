@@ -9,6 +9,10 @@ void printArray(int* a, int n);
 void printUsage();
 void swap(int* a, int* b);
 
+struct x {
+  int q;
+};
+
 int main(int argc, char* argv[]) {
   int numVals = 0;
   char type = '\0';
