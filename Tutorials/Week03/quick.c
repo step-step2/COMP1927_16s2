@@ -17,12 +17,14 @@ int partition(int* arr, int lo, int hi) {
 
   // Loop over our array, incrementing i every time we swap 
   // (move a smaller value to the left of i)
+  // We stop when we reach the last value
   for (int j = lo; j < hi; ++j) {
     if (arr[j] <= pivot) {
       swap(arr + i, arr + j);
       ++i;
     }
   }
+  swap(arr + i, arr + hi);
 
   return i;
 }
@@ -33,7 +35,7 @@ void quickSort(int* arr, int lo, int hi)  {
     int mid = partition(arr, lo, hi);
 
     // Quicksort our sub arrays
-    quickSort(arr, lo, mid);
+    quickSort(arr, lo, mid - 1);
     quickSort(arr, mid + 1, hi);
   }
 }

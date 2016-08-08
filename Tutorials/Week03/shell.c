@@ -17,7 +17,8 @@ void shell(int* arr, int n) {
   int gaps[NUM_GAPS] = {4096, 1024, 256, 64, 16, 4, 1};
   
   // For each gap in gaps
-  for (int gap = 0; gap < NUM_GAPS; ++gap) {
+  for (int gapP = 0; gapP < NUM_GAPS; ++gapP) {
+    int gap = gaps[gapP];
 
     // Assume the gap is 16
     // Technically it starts at arr[0], but we assume the first 'gap' is
@@ -27,8 +28,8 @@ void shell(int* arr, int n) {
 
       int inner = iter;
 
-      for (inner = iter; inner >= gaps[gap] && arr[inner - gap] > t; inner -= iter) {
-        arr[inner] = arr[inner - gaps[gap]];
+      for (inner = iter; inner >= gap && arr[inner - gap] > t; inner -= gap) {
+        arr[inner] = arr[inner - gap];
       }
       arr[inner] = t;
     }
