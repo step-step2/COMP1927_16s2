@@ -1,12 +1,6 @@
 #include "Sorts.h"
 #include <stdlib.h>
 
-void swap(int* a, int* b) {
-  int t = *a;
-  *a = *b;
-  *b = t;
-}
-
 void bubble(int* arr, int n) {
   int swapped = 0;
   for (int i = 0; i < n - 1; ++i) {

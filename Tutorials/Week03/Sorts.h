@@ -11,3 +11,4 @@ void shell(int* a, int n);
 
 /* Helper functions */
 void swap(int* a, int * b);
+void shuffle(int* arr, int lo, int hi);
