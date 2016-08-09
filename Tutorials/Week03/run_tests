@@ -19,7 +19,7 @@ do
 
   cat /dev/null > ${sort}Desc
 
-  for i in 1000 2000 4000 8000 16000 32000 64000
+  for i in 1000 2000 4000 # 8000 16000 32000 64000
   do
     avg=0
     for p in 1 2 3 4 5

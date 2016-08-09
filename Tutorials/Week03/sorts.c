@@ -4,7 +4,23 @@
 
 void usage();
 
+typedef struct x {
+  int q;
+} X;
+
 int main(int argc, char* argv[]) {
+  X* q;
+  q->q = 1;
+
+  char x[4] = {0}; 
+  x[2] = 1;
+  int* w = (int*)x;
+
+  struct x* q;
+  q.q = 1;
+
+
+
   if (argc != 3) {
     usage();
     exit(1);
