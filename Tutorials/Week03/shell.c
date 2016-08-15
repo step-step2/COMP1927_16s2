@@ -23,11 +23,7 @@
  */
 
 void shell(int* arr, int n) {
-  int gaps[NUM_GAPS] = {4096, 1024, 256, 64, 16, 4, 1};
-  
-  // For each gap in gaps
-  for (int gapP = 0; gapP < NUM_GAPS; ++gapP) {
-    int gap = gaps[gapP];
+  int gaps[NUM_GAPS] = {8,7,6,5,4,3,2,1}
 
     // Assume we are at gap 16
     // Iterate over the gap values, so first go over 

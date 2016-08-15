@@ -19,7 +19,8 @@ do
 
   cat /dev/null > ${sort}Desc
 
-  for i in 1000 2000 4000 # 8000 16000 32000 64000
+  echo "Testing $sort"
+  for i in 8000 16000 32000 64000
   do
     avg=0
     for p in 1 2 3 4 5
@@ -28,8 +29,9 @@ do
       avg=`echo "$t + $avg" | bc -l`
     done;
     avg=`echo "$avg / 5" | bc -l`
-    echo "Average for N=$i is: $avg" >> ${sort}Desc
+    echo "Average for N=$i is: $avg"
   done;
+  echo ""
 done;
 
 wait;
