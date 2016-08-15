@@ -1,0 +1,17 @@
+Welcome to your first Quiz!
+
+This works similar to labs, where you run 'make' and then 
+./solution to run your program.
+
+It should take in a list of characters from the set '{}[]()',
+not in any particular order or fashion, and print "invalid"
+or "valid" whether or not the string is a valid set of brackets
+i.e. ([]) is valid, but ([)] is invalid, and so is (][)
+
+I've only written basic tests in the tests folder, you need to
+create 3 more cases which the basic ones do not consider. 0X.in 
+should be the input for your program, and 0X.exp is what you 
+expect it to output
+
+To run tests, first go "chmod a+x run_tests", should only need
+to do this once ever, then go ./run_tests
