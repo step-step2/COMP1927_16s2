@@ -1,0 +1,9 @@
+#!/bin/sh
+
+echo "Running Tests"
+for file in 00 01 02 03 04
+do
+  echo "Testing $file"
+  ./quack < tests/$file.in > tests/$file.out
+  diff tests/$file.out tests/$file.exp
+done;
