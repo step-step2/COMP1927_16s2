@@ -22,8 +22,11 @@ int main(int argc, char* argv[]) {
     pushQ(q, v);
   }
 
-  while (sizeQ(q) != 0) {
+  while (sizeQ(q) != 1) {
     printf("%d ", popQ(q));
+  }
+  if (sizeQ(q) != 1) {
+    printf("%d", popQ(q));
   }
 
   return 0;
