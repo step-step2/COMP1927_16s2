@@ -57,8 +57,8 @@ char pop(Stack s) {
 }
 
 int isValid(char* str) {
-
   Stack s = newStack();
+
   for (int i = 0; str[i] != '\0'; ++i) {
     switch (str[i]) {
       case '[': 

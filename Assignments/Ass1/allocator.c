@@ -64,7 +64,7 @@ void vlad_init(u_int32_t size)
    // remove them when you implement your solution
    memory = NULL;
    free_list_ptr = (vaddr_t)0;
-   memory_size = 0;
+   memory_size = size;
    strategy = BEST_FIT;
    // TODO for Milestone 1
 }
@@ -80,6 +80,7 @@ void vlad_init(u_int32_t size)
 
 void *vlad_malloc(u_int32_t n)
 {
+  (void)n;
    // TODO for Milestone 2
    return NULL; // temporarily
 }
@@ -95,6 +96,7 @@ void *vlad_malloc(u_int32_t n)
 
 void vlad_free(void *object)
 {
+  (void)object;
    // TODO for Milestone 3
    vlad_merge();
 }

@@ -4,6 +4,10 @@
 
 #define MAX 1024
 
+struct x {
+  int y;
+};
+
 void test1() {
   char buf[MAX];
   int  nC, nL = 0;
