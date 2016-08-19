@@ -23,7 +23,8 @@ int main(int argc, char* argv[]) {
   char bin_sum[129] = {0};
   binSum(bin_str1, bin_str2, bin_sum);
 
-  printf("%s", bin_sum);
+  printf("%s\n", bin_sum);
+  return 0;
 }
 
 void printUsage() {

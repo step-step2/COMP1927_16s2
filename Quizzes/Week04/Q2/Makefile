@@ -6,8 +6,8 @@ CFLAGS=-Wall -Werror -g
 
 all: quack
 
-quack: Quack.o main.o
-	$(CC) -o quack Quack.o main.o
+quack: Quack.o Stack.o main.o
+	$(CC) -o quack Quack.o Stack.o main.o
 
 Quack.o: Quack.c Quack.h Stack.o
 	$(CC) -c $(CFLAGS) Quack.c
