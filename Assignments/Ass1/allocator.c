@@ -96,7 +96,8 @@ void *vlad_malloc(u_int32_t n)
 
 void vlad_free(void *object)
 {
-  (void)object;
+  struct alloc_block_header* my = (struct alloc_block_header*)object;
+  my->magic = 1;
    // TODO for Milestone 3
    vlad_merge();
 }

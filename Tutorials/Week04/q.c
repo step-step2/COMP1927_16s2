@@ -1,42 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
 
-#define MAX 1024
+typedef struct alloc {
+  int magic;
+  int size;
+  int next;
+}* Alloc;
 
-struct x {
-  int y;
-};
-
-void test1() {
-  char buf[MAX];
-  int  nC, nL = 0;
-
-  while ((nC = read(0, buf, MAX)) > 0) {
-    char *c;
-    for (c = buf; c < buf+nC; c++) {
-      if (*c == '\n') nL++;
-    }
-    write(1, buf, nC);
-  }
-  printf("%d\n",nL);
-}
-
-void test2() {
-  char buf[MAX];
-	int  nL = 0;
- 
-	while ((fgets(buf,MAX,stdin)) != NULL) {
-		fputs(buf,stdout);
-		nL++;
-	}
-	printf("%d\n",nL);
-}
+typedef struct free {
+  int magic;
+  int size;
+}* Free;
 
 int main() {
-  FILE* f = fopen("data", "r");
-  fprintf(f, "a line\n");
-  fclose(f);
+  char memory[100] = {0};
+  Free free_list = (Free)memory;
+  free_list->magic = 0xDEADBEEF;
+  free_list->size = 100;
+
+  Alloc first_alloc = (Alloc)memory;
+  first_alloc->magic = 0xBEEFDEAD;
 
   return 0;
 }
+
+
+
+
