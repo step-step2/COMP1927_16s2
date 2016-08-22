@@ -45,3 +45,7 @@ int popS(Stack s) {
   s->size--;
   return v;
 }
+
+int sizeS(Stack s) {
+  return s->size;
+}
