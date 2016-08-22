@@ -1,0 +1,17 @@
+For this question, you are only concerned with writing the Quack.c/h file
+
+You are given a Stack ADT. You need to write/modify the Quack ADT to act as
+a queue, USING STACKS.
+
+Quick run down of Stacks vs Queues:
+{
+Stacks are First In, First Out (FIFO). Imagine a stack of plates, the push
+function will out the plate at the top, while pop will remove it.
+
+Queues are First In, Last Out (FILO). This is just like a queue of people,
+push will place something at the back of the line, pop will remove something
+from the front.
+}
+
+You CANNOT create a new ADT, you can only use fundamental types, and whatever
+is defined in the Stack.h and Quack.h
