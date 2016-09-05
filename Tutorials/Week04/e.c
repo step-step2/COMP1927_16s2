@@ -9,6 +9,8 @@ void test1() {
   char buf[MAX];
   int  nC, nL = 0;
 
+  FILE* myFile = fopen("data", "a");
+
   while ((nC = read(0, buf, MAX)) > 0) {
     char *c;
     for (c = buf; c < buf+nC; c++) {
@@ -26,6 +28,7 @@ void test2() {
 	while ((fgets(buf,MAX,stdin)) != NULL) {
 		fputs(buf,stdout);
 		nL++;
+    fwrite()
 	}
 	printf("%d\n",nL);
 }

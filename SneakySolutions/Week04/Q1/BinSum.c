@@ -27,6 +27,8 @@ void binSum(char* bin1, char* bin2, char* res) {
   int intRes = 0;
   int i = 0, p = 0;
 
+  int q = 0b1110 ^ 0b110;
+
   for (p = 0, i = strlen(bin1) - 1; i >= 0; --i, ++p) {
     int1 += (btoi(bin1[i]) << p);
   }
