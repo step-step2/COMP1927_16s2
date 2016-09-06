@@ -1,13 +1,9 @@
-typedef int Edge;
 typedef struct GraphRep *Graph;
-
-typedef struct GraphRep {
-    int   nV;    // #vertices
-    Edge **edges; // matrix of 0/1 values
-};
+typedef struct EdgeRep *Edge;
 
 Graph createGraph(int numV);
-void createEdge(Graph g, int from, int to);
+Edge createEdge(int v);
+void addEdge(Graph g, int from, int to);
 
 
 int BFS(Graph g, int start, int end);

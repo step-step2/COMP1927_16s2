@@ -4,6 +4,17 @@
 #include "Graph.h"
 #include "Queue.h"
 
+struct GraphRep {
+    int   nV;    // #vertices
+    Edge* edges; // matrix of 0/1 values
+};
+
+struct EdgeRep {
+    int connection;
+    Edge next;
+};
+
+
 /* You do this bit! */
 // You are given the graph, your starting node (start) and the finishing node (end)
 // You need to find how long the shortest route from start, to the end node
@@ -24,21 +35,42 @@ Graph createGraph(int numV) {
   nGraph->nV = numV;
   nGraph->edges = malloc(sizeof(Edge*) * numV);
 
-  int i, j;
+  int i;
   for (i = 0; i < numV; ++i) {
-    nGraph->edges[i] = malloc(sizeof(Edge) * numV);
-    for (j = 0; j < numV; ++j) {
-      nGraph->edges[i][j] = 0;
-    }
+    nGraph->edges[i] = NULL;
   }
 
   return nGraph;
 }
 
-void createEdge(Graph g, int from, int to) {
+Edge createEdge(int v) {
+  Edge newEdge = malloc(sizeof(struct EdgeRep));
+  newEdge->connection = v;
+  newEdge->next = NULL;
+  return newEdge;
+}
+
+void addEdge(Graph g, int from, int to) {
   assert(from < g->nV);
   assert(to < g->nV);
 
-  g->edges[from][to] = 1;
-  g->edges[to][from] = 1;
+  Edge curr = g->edges[from];
+  if (curr == NULL) {
+    g->edges[from] = createEdge(to);
+  } else {
+    while (curr->next != NULL) {
+      curr = curr->next;
+    }
+    curr->next = createEdge(to);
+  }
+
+  curr = g->edges[to];
+  if (curr == NULL) {
+    g->edges[to] = createEdge(from);
+  } else {
+    while (curr->next != NULL) {
+      curr = curr->next;
+    }
+    curr->next = createEdge(from);
+  }
 }

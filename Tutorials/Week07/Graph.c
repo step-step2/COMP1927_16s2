@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "Graph.h"
 
+Graph createGraph(int numN) {
+}
+
 int nEdges(Graph g) {
-  (void)g;
-  return 0;
 }
 
 Edge* edges(Graph g, int* nE) {
