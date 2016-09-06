@@ -11,35 +11,8 @@ typedef struct node {
   Node next, prev;
 } node;
 
-List createList() {
-  List l = malloc(sizeof(list));
-  l->head = NULL;
-  l->tail = NULL;
-
-  return l;
-}
-
-Node createNode(int v) {
-  Node n = malloc(sizeof(node));
-  n->next = NULL;
-  n->prev = NULL;
-  n->v = v;
-
-  return n;
-}
-
-void append(List l, int v) {
-  Node n = createNode(v);
-
-  if (l->head == NULL) {
-    l->head = n;
-  } else {
-    l->tail->next = n;
-  }
-  l->tail = n;
-}
-
-int KthLast(List l, int p) {
+/** BEGIN PRAC SOLUTIONS **/
+int nodeFromEnd(List l, int p) {
 
   int kthLastP = 0;
   int i = 0;
@@ -125,6 +98,96 @@ List merge(List l1, List l2) {
   for (; curr2 != NULL; curr2 = curr2->next) append(newList, curr2->v);
 
   return newList;
+}
+
+void cutNode(Node prev, Node curr, List l) {
+  Node toIns = NULL;
+  if (prev != NULL) {
+    prev->next = curr->next;
+  }
+
+  if (l->tail != NULL) {
+    l->tail->next = curr;
+    l->tail = curr;
+  } else {
+    l->head = l->tail = curr;
+  }
+  l->tail->next = NULL;
+}
+
+List partition(List l, int n) {
+  List partList = createList();
+  partList->head = NULL;
+
+  Node curr = l->head;
+  Node prev = NULL;
+
+  while (curr != NULL) {
+
+    while (curr != NULL && curr->v >= n) {
+      if (prev == NULL) {
+        l->head = curr->next;
+      } else {
+        prev->next = curr->next;
+
+        if (prev->next == NULL) {
+          l->tail = prev;
+        } else if (curr == l->tail) {
+          l->tail = prev->next;
+        }
+      }
+      curr->next = NULL;
+
+      if (partList->tail != NULL) {
+        partList->tail->next = curr;
+        partList->tail = curr;
+      } else {
+        partList->head = partList->tail = curr;
+      }
+
+      if (prev == NULL) {
+        curr = l->head;
+      } else {
+        curr = prev->next;
+      }
+    }
+
+    if (curr != NULL) {
+      prev = curr;
+      curr = curr->next;
+    }
+  }
+
+  return partList;
+}
+
+/** Helper Functions **/
+List createList() {
+  List l = malloc(sizeof(list));
+  l->head = NULL;
+  l->tail = NULL;
+
+  return l;
+}
+
+Node createNode(int v) {
+  Node n = malloc(sizeof(node));
+  n->next = NULL;
+  n->prev = NULL;
+  n->v = v;
+
+  return n;
+}
+
+void append(List l, int v) {
+  Node n = createNode(v);
+
+  if (l->head == NULL) {
+    l->head = n;
+  } else {
+    l->tail->next = n;
+  }
+  l->tail = n;
 }
 
 void printList(List l) {
