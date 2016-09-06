@@ -13,7 +13,10 @@
 // We are not concerned right now about then remembering the shortest route,
 // only how long it will take us to get to our goal
 int BFS(Graph g, int start, int end) {
-  return NULL;
+  (void)g;
+  (void)start;
+  (void)end;
+  return 0;
 }
 
 Graph createGraph(int numV) {
