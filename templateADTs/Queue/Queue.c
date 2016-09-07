@@ -34,9 +34,8 @@ void push(Queue q, int v) {
   if (q->front == NULL) {
     q->front = q->back = createNode(v);
   } else {
-    Node newN = createNode(v);
-    q->back->next = newN;
-    q->back = newN;
+    q->back->next = createNode(v);
+    q->back = q->back->next;
   }
   q->size++;
 }
