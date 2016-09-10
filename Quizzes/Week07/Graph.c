@@ -23,6 +23,7 @@ struct EdgeRep {
 // 2. A way to check if you've been to a Node before (to avoid exploring it again)
 // We are not concerned right now about then remembering the shortest route,
 // only how long it will take us to get to our goal
+// If you cannot get from start to end, return -1
 int BFS(Graph g, int start, int end) {
   (void)g;
   (void)start;

@@ -1,9 +1,16 @@
-typedef int Edge;
+typedef struct EdgeRep* Edge;
 typedef struct GraphRep *Graph;
+
+typedef struct EdgeRep {
+  int v;
+  // int** edges[NUM_V][NUM_V];
+  Edge next;
+};
 
 typedef struct GraphRep {
     int   nV;    // #vertices
     int **edges; // matrix of 0/1 values
+    Edge connections[];
 };
 
 // Count the number of unique edges
@@ -11,6 +18,15 @@ int nEdges(Graph g);
 
 // Return an array of edges, storing the number in nE
 Edge* edges(Graph g, Edge* nE);
+
+
+
+
+
+
+
+
+
 
 
 /* Other random things we will not implement */
