@@ -11,7 +11,7 @@ tester: Queue.o Graph.o main.o
 	$(CC) -o $(EXE) Queue.o Graph.o main.o
 
 Graph.o: Graph.c Graph.h
-	$(CC) -c $(CFLAGS) Graph.c
+	$(CC) -c $(CFLAGS) Graph.c Queue.o
 
 Queue.o: Queue.c Queue.h
 	$(CC) -c $(CFLAGS) Queue.c
