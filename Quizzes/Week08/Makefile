@@ -7,17 +7,17 @@ EXE=tester
 
 all: $(EXE)
 
-tester: Stack.o Q1.o main.o
-	$(CC) -o $(EXE) Q1.o Stack.o main.o
+tester: Queue.o Q1.o main.o
+	$(CC) -o $(EXE) Q1.o Queue.o main.o
 
-Q1.o: Q1.c Stack.c Q1.h
-	$(CC) -c $(CFLAGS) Q1.c Stack.c
+Q1.o: Q1.c Queue.c Q1.h
+	$(CC) -c $(CFLAGS) Q1.c Queue.c
 
-Stack.o: Stack.c Stack.h
-	$(CC) -c $(CFLAGS) Stack.c
+Queue.o: Queue.c Queue.h
+	$(CC) -c $(CFLAGS) Queue.c
 
 main.o: main.c
 	$(CC) -c $(CFLAGS) main.c
 
 clean:
-	rm -f Queue.o Stack.o main.o $(EXE)
+	rm -f Queue.o Queue.o main.o $(EXE)

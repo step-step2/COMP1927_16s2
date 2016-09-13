@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Q1.h"
-#include "Stack.h"
+#include "Queue.h"
 
 /**
  * Complete this section please

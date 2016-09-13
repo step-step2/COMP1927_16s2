@@ -40,6 +40,10 @@ Map newMap()
    return g;
 }
 
+void foo() {
+
+}
+
 // Remove an existing graph
 void disposeMap(Map g)
 {
@@ -52,6 +56,7 @@ void disposeMap(Map g)
    for (i = 0; i < g->nV; i++){
        curr = g->connections[i];
        while(curr != NULL){
+         foo();
           next = curr->next;
           free(curr);
           curr=next;
