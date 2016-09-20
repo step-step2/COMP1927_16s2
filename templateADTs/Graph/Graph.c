@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Graph.h"
+#include "Queue.h"
 
 struct Edge {
   int v;
@@ -9,24 +10,9 @@ struct Edge {
 
 struct Graph {
     int   nV;    // #vertices
-    Edge* connections; // matrix of 0/1 values
+    int** connections; // matrix of 0/1 values
     // Edge* connections; // Adjacency list
 };
-
-int isEvenGraph(Graph g) {
-  for (int i = 0; i < g->nV; ++i) {
-    int nEdges = 0;
-    for (Edge curr = g->connections[i]; curr != NULL; curr = curr->next) {
-      nEdges++;
-    }
-    if (nEdges % 2 == 1) {
-      printf("yay!\n");
-      return 0;
-    }
-  }
-  return 1;
-}
-
 
 // Assuming we are using a matrix to represent a graph
 // This is the memory-optimised version
