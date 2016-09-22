@@ -1,0 +1,8 @@
+- Part 1 of Assignment is due this Friday!
+- Prim -> Gradually build forest
+- Kruskal -> build forests and they gradually come together
+
+- Djikstra is basically a graph search, picking the cheapest path to traverse
+  each time
+- Predicate is an array which tells you how to get to a vertex's parent
+  i.e. from some vertex v, pred[v] tells you which vertex we went from to get to v
