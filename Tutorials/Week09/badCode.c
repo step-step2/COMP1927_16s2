@@ -39,12 +39,16 @@ typedef int Vertex;
 
 void shortestPath(Graph g, Vertex start, Vertex pred[], int dist[]) {
    PQueue pq = newPQ(dist,nV(g));
+   
    for (Vertex v = 0; v < g->nV; v++) {
      pred[v] = -1;
      dist[v] = MAX_WT;
      join(pq,v);
    }
-   dist[start] = 0.0;  reorder(pq,start);
+
+   dist[start] = 0.0;
+   reorder(pq,start);
+   
    while (!empty(pq)) {
       Vertex s = leave(pq);
       for (Vertex t = 0; t < nV(g); t++) {
