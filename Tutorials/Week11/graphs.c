@@ -21,7 +21,7 @@ Graph newGraph(int nV) {
   return nG;
 }
 
-void graphSize() {
+int main() {
   Graph g = newGraph(10);
   printf("Sizes:\n");
   printf("g->nV: %lu\n", sizeof(g->nV));
@@ -29,4 +29,5 @@ void graphSize() {
   printf("g->edges: %lu\n", sizeof(g->edges));
   printf("g->edges[x]: %lu\n", sizeof(g->edges[0]) * 10);
   printf("g->edges[x][y]: %lu\n", sizeof(g->edges[0][0]) * 10*10);
+  return 0;
 }

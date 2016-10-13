@@ -10,15 +10,38 @@ struct BSTNode {
 };
 
 int BSTreeMaxBranchLen(BSTree t) {
-  (void)t;
-  return 0;
+  if (t == NULL || (t->right == NULL && t->left == NULL)) {
+    return 0;
+  } else {
+    return maxBranchLen(t) - 1;
+  }
+}
+
+int maxBranchLen(BSTree t) {
+  if (t == NULL) {
+    return 0;
+  } else {
+    return 1 + max(BSTreeMaxBranchLen(t->left), BSTreeMaxBranchLen(t->right));
+  }
+}
+
+int maxLen(BSTree t) {
+}
+
+BSTree insert(BSTree t, int v) {
 }
 
 int BSTWidth(BSTree t) {
-  (void)t;
-  return 0;
+  if (t == NULL) {
+    return 0;
+  } else if (t->left == NULL && t->right == NULL){
+    return 3;
+  } else {
+    return BSTWidth(t->right) + BSTWidth(t->left) + 3;
+  }
 }
 
+// Modified
 int BSTreeFind(BSTree t, int v)
 {
   if (t == NULL)
@@ -48,17 +71,29 @@ BSTree BSTreeDelete(BSTree t, int v) {
   return NULL;
 }
 
-// Print the Tree Infix
-void showBSTreeInfix(BSTree t) {
-  (void)t;
+// Print the Tree Inorder
+void showBSTreePrefix(BSTree t) {
+  if (t == NULL) return;
+
+  printf("%d ", t->val);
+  showBSTreePrefix(t->left);
+  showBSTreePrefix(t->right);
 }
 // Print the Tree Postfix
 void showBSTreePostfix(BSTree t) {
-  (void)t;
+  if (t == NULL) return;
+
+  showBSTreePostfix(t->left);
+  showBSTreePostfix(t->right);
+  printf("%d ", t->val);
 }
-// Print the Tree Inorder
-void showBSTreeInorder(BSTree t) {
-  (void)t;
+// Print the Tree Infix
+void showBSTreeInfix(BSTree t) {
+  if (t == NULL) return;
+
+  showBSTreeInfix(t->left);
+  printf("%d ", t->val);
+  showBSTreeInfix(t->right);
 }
 
 BSTree BSTreeInsert(BSTree t, int v) {
