@@ -7,6 +7,30 @@ struct tree {
   int val;
 };
 
+// Write this function. You are given a Tree (t), and two pointers.
+// k is a pointer to the 'kth' smallest value you should go to
+//  E.g. for *k == 0, it should return the smallest value
+// v is a pointer to an int pointer, the function should finish by pointing to the value
+//  E.g. You found the value, *v = &(t->val)
+//  Initially, v is set to point to NULL
+//
+//  You can assume the tree is a BST with at least one element and no duplicates 
+//  and that 0 <= k < n where n is the number of nodes in the tree
+//
+//  To test your solution, compile with `make clean && make`, then ./solution
+//  All the tests are in main.c
+void getKthSmallest(Tree t, int* k, int** v) {
+  (void)t;
+  (void)k;
+  (void)v;
+}
+
+
+/*
+
+   You can ignore these methods below, unless you want examples of using the tree
+
+*/
 Tree createTree() {
   return NULL;
 }
@@ -32,19 +56,4 @@ Tree insert(Tree t, int v) {
     }
   }
   return t;
-}
-
-// Write this function. You are given a Tree (t), and two pointers.
-// k is a pointer to the 'kth' smallest value you should go to
-//  E.g. for *k == 0, it should be the smallest
-// v is a pointer to an int pointer, which should finish by pointing to the value
-//  E.g. You found the value, *v = &(t->val)
-//  Initially, v is set to point to NULL
-//
-//  You can assume the tree is a BST with no duplicates and that 0 <= k < n
-//  Where n is the number of nodes in the tree
-void getKthSmallest(Tree t, int* k, int** v) {
-  (void)t;
-  (void)k;
-  (void)v;
 }
