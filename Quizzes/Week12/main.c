@@ -30,8 +30,9 @@ void test1() {
   Tree t = createTree();
   int vals[] = { 1, 2, 3, 4, 5 };
 
-  buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
   printf("Tree Constructed\n");
+
   testTree(t, vals, sizeof(vals) / sizeof(int));
   printf("Congrats! Passed test1!\n\n");
 }
@@ -42,7 +43,7 @@ void test2() {
   Tree t = createTree();
   int vals[] = { 4, 2, 1, 3, 6, 5, 7 };
 
-  buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
   printf("Tree Constructed\n");
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
@@ -56,7 +57,8 @@ void test3() {
   printf("Constructing Tree\n");
   Tree t = createTree();
   int vals[] = { 10, 5, 4, 3, 15, 13, 16, 17 };
-  buildTree(t, vals, sizeof(vals) / sizeof(int));
+  
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
   printf("Tree Constructed\n");
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
@@ -77,7 +79,7 @@ void test4() {
     vals[i] = rand() - (RAND_MAX / 2);
   }
 
-  buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
   printf("Tree Constructed\n");
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
