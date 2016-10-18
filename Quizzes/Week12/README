@@ -1,14 +1,20 @@
 You know the gist by now, have a look in BST.c for the question =)
 Use the command below to get the repo, then navigate to COMP1927_16s2/Quizzes/Week12
+```
 git clone https://github.com/stevenStrij/COMP1927_16s2
+cd COMP1927_16s2
+```
 
-
-If you're not bothered/can't get it out, quick lesson on using branches in git
-(warning, I do assume you know the basics of git, like how to commit, if you
-don't just yet, now's a good time to learn! Have a look at "Atlassian link"):
+If you're not bothered/can't get it out, i wrote up a quick lesson on using 
+branches in git (warning, I do assume you know the basics of git, like how to 
+commit, if you don't just yet, now's a good time to learn! Have a look at:
+https://www.atlassian.com/git/). Alternatively, of course, you are free to work
+on what you please:
 
 Copy and paste this command into terminal to see how a git tree looks like:
-~~~ magic git tree function ~~~
+```
+git log --graph
+```
 
 Each 'node' here represents a commit. It's sorta like a linked list at this point,
 with the HEAD being the last commit. Branches are a concept where you can literally
@@ -16,9 +22,11 @@ with the HEAD being the last commit. Branches are a concept where you can litera
 where you branched off), then merge your changes back in. To see how this might look,
 use the below commands to get another repo of mine, and see what a more complicated
 git tree might look like:
+```
 git clone https://bitbucket.org/panda_b/ethics-project
 cd ethics-project
-~~~ magic git tree function ~~~
+git log --graph
+```
 
 The reason why we do this is to keep things neat and avoid merge-conflicts (if 
 you haven't hit a merge-conflict yet, it's where two people work on the same 
@@ -30,13 +38,15 @@ merge you're changes into master
 
 There is different set of commands for creating a branch, and moving to it. For
 creating a branch, we go:
+```
 git branch <branch_name>
 Then to go to that branch, we use:
 git checkout <branch_name>
+```
 
 For now, I'm gonna call my branch 'branchy', you can call it whatever you want.
 To see how branching works, let's do the following set of commands:
-
+```
 git checkout branchy                  // move to the branchy branch
 touch newFile.c                       // Create a new empty file called newFile.c
 git add newFile.c                     // Track the file
@@ -47,7 +57,8 @@ git checkout master
 git touch otherWork.c
 git add otherWork.c
 git commit -am "Team members work"
-~~~ Magic git tree function ~~~
+git log --graph
+```
 
 Notice how now, the tree looks different, master continued straight, and your 
 branchy branch went off to the side. In this case, that extra node off of master
@@ -56,8 +67,10 @@ would represent you running `git pull`, and another member pushed onto master.
 If you want, you can checkout branchy again, add a few more fun commits, but
 I'm gonna say I'm done now, the function/code i wrote is finished, and i want to
 add it back to master. Fairly simple process:
+```
 git checkout master
 git merge branchy
+```
 
 This will apply all the changes you made on branchy, to the master branch.
 
