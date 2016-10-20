@@ -4,9 +4,11 @@
   - Rotations
   - Focus on:
     - 2-3-4
-    - RB Trees
     - AVL Trees
+    - RB Trees
 
   - Talk about hashes / chaining if we have time, otherwise in the lab
+
+  - Briefly talk about gprof (maybe)
 
 - 2nd last tutorial =(((
