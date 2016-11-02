@@ -26,12 +26,14 @@ void kthSmallestTests() {
     test4
   };
 
+  printf("Running kthSmallestTests\n");
   unsigned long i = 0;
   for (i = 0; i < sizeof(tests)/sizeof(void*); ++i) {
     printf("Starting test %lu\n", i);
     tests[i]();
     printf("Congrats! Passed test %lu\n\n", i);
   }
+  printf("Passed kthSmallestTests!\n");
 }
 
 /* Test Methods */

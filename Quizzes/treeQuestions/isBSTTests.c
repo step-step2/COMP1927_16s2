@@ -10,5 +10,5 @@
 // Test Methods
 
 // 'main' method
-void findValTests() {
+void isBSTTests() {
 }
