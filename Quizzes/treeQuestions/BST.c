@@ -52,15 +52,16 @@ void getKthSmallest(Tree t, int* k, int** v) {
 // The lowest common ancestor is defined as the first node which each of
 // v1 and v2 share, as they go up the tree. I.e. the root of the whole tree is
 // the highest common ancestor. For the following tree:
-//          4
-//        /   \
-//       2     7
-//      / \   /
-//     1   3 6
-//    /
-//   0 
-// If v1 == 3, and v2 == 7, then their lowest common ancestor is 4
-// If v1 == 3, and v2 == 0, then their lowest common ancestor is 2
+/*          4
+          /   \
+         2     7
+        / \   /
+       1   3 6
+      /
+     0 
+   If v1 == 3, and v2 == 7, then their lowest common ancestor is 4
+   If v1 == 3, and v2 == 0, then their lowest common ancestor is 2
+ */
 Tree lowestCommonAnc(Tree t, int v1, int v2) {
   (void)t;
   (void)v1;
@@ -100,3 +101,12 @@ Tree insert(Tree t, int v) {
   }
   return t;
 }
+
+Tree buildTree(Tree t, int* vals, int n) {
+  int i = 0;
+  for (i = 0; i < n; ++i) {
+    t = insert(t, vals[i]);
+  }
+  return t;
+}
+

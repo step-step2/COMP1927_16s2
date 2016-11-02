@@ -1,0 +1,2 @@
+void findValTests();
+void kthSmallestTests();
