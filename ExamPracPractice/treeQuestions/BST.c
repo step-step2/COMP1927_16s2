@@ -62,9 +62,6 @@ int isBST(Tree t) {
   
     You can assume the tree is a BST with at least one element and no duplicates 
     and that 0 <= k < n where n is the number of nodes in the tree
-  
-    To test your solution, compile with `make clean && make`, then ./solution
-  All the tests are in main.c
 */
 void getKthSmallest(Tree t, int* k, int** v) {
   (void)t;

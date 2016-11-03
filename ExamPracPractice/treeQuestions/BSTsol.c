@@ -44,8 +44,28 @@ int findValue(Tree t, int v) {
 // smaller than the root, and the right child bigger
 // return 0 if it isn't a BST, 1 if it is
 int isBST(Tree t) {
-  (void)t;
-  return 0;
+  // Base case, if our tree is empty, return that it is a BST
+  if (t == NULL) return 1;
+
+  // Check to see if our left and right branches are BST's
+  int leftBranch = isBST(t->left);
+  int rightBranch = isBST(t->right);
+  if (leftBranch == 0 || rightBranch == 0) {
+    return 0;
+  }
+
+  // Now we know that the left and right children are valid BST's
+  // We check our immediate root and children to see if they are valid
+  if (t->left != NULL && t->left->val > t->val) {
+    return 0;
+  }
+  if (t->right != NULL && t->right->val > t->val) {
+    return 0;
+  }
+
+  // All conditions pass, we can safely say that this whole tree under the root
+  // t is a valid BST!
+  return 1;
 }
 
 
@@ -64,14 +84,33 @@ int isBST(Tree t) {
   
     You can assume the tree is a BST with at least one element and no duplicates 
     and that 0 <= k < n where n is the number of nodes in the tree
-  
-    To test your solution, compile with `make clean && make`, then ./solution
-  All the tests are in main.c
 */
 void getKthSmallest(Tree t, int* k, int** v) {
-  (void)t;
-  (void)k;
-  (void)v;
+  // If the tree is empty, or we've found our value, return
+  if (t == NULL || *v != NULL) {
+    return;
+  }
+
+  // First, go down as far left as we can
+  getKthSmallest(t->left, k, v);
+
+  // The return will place us as far left as we can go
+  // We use 'k' as a countdown to see if we've hit the kth smallest
+  // value
+  // In here we check if k == 0, if it is, we set our v
+  if (*k <= 0 && *v == NULL) {
+    *v = &(t->val);
+  }
+  // Next time we will meet the next smallest value, so decrement
+  *k = *k - 1;
+
+  // We have traversed down as far left as we can, go one step right,
+  // then go down as far left as we can again (we start at the top of this
+  // function)
+  getKthSmallest(t->right, k, v);
+
+
+  // Notice that this is just an infix operation
 }
 
 /* Find the lowest common ancestor between the noes with values v1 and v2.
@@ -91,10 +130,25 @@ void getKthSmallest(Tree t, int* k, int** v) {
    If v1 == 3, and v2 == 0, then their lowest common ancestor is 2
 */
 Tree lowestCommonAnc(Tree t, int v1, int v2) {
-  (void)t;
-  (void)v1;
-  (void)v2;
-  return NULL;
+  // Keep in mind what information you have; the key here is that you have
+  // a BST, and you are guaranteed that the nodes exist
+  // There is no need to find the actual nodes
+
+  // Base case
+  if (t == NULL) return NULL;
+
+  // Check to see where v1 and v2 lie relative to the current tree
+  // We recurse down until they diverge
+  if (t->val < v1 && t->val < v2) {
+    return lowestCommonAnc(t->left, v1, v2);
+  } else if (t->val > v1 && t->val > v2) {
+    return lowestCommonAnc(t->right, v1, v2);
+  }
+
+  // If it failed both the above conditions, that means that v1 and v2
+  // diverge down different branches, and we have found their lowest common
+  // ancestor
+  return t;
 }
 
 
