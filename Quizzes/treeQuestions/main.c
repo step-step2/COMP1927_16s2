@@ -45,4 +45,3 @@ int main(int argc, char* argv[]) {
   printf("You passed all the tests. Good for you.\n");
   return 0;
 }
-
