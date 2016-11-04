@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 #include "BST.h"
 
 
@@ -70,7 +71,8 @@ void getKthSmallest(Tree t, int* k, int** v) {
 }
 
 /* Find the lowest common ancestor between the noes with values v1 and v2.
-   You are guaranteed that both these values exist in your BST
+   You are guaranteed that both these values exist in your BST and they are
+   different
    The lowest common ancestor is defined as the first node which each of
    v1 and v2 share, as they go up the tree. I.e. the root of the whole tree is
    the highest common ancestor. For the following tree:
@@ -139,6 +141,11 @@ Tree randInsert(Tree t, int v) {
     }
   }
   return t;
+}
+
+int getRootVal(Tree t) {
+  assert(t != NULL);
+  return t->val;
 }
 
 Tree buildTree(Tree t, int* vals, int n, Tree (*insertF)(Tree, int)) {

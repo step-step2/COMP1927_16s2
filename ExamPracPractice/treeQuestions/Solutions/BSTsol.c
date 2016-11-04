@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 #include "BST.h"
 
 
@@ -140,9 +141,9 @@ Tree lowestCommonAnc(Tree t, int v1, int v2) {
   // Check to see where v1 and v2 lie relative to the current tree
   // We recurse down until they diverge
   if (t->val < v1 && t->val < v2) {
-    return lowestCommonAnc(t->left, v1, v2);
-  } else if (t->val > v1 && t->val > v2) {
     return lowestCommonAnc(t->right, v1, v2);
+  } else if (t->val > v1 && t->val > v2) {
+    return lowestCommonAnc(t->left, v1, v2);
   }
 
   // If it failed both the above conditions, that means that v1 and v2
@@ -198,6 +199,11 @@ Tree randInsert(Tree t, int v) {
     }
   }
   return t;
+}
+
+int getRootVal(Tree t) {
+  assert(t != NULL);
+  return t->val;
 }
 
 Tree buildTree(Tree t, int* vals, int n, Tree (*f)(Tree, int)) {
