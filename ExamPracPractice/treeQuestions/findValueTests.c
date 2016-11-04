@@ -53,7 +53,6 @@ void findValTest2() {
 }
 
 void findValTest3() {
-  printf("Starting findValTest2\n");
   Tree t = createTree();
   int vals[] = { 4, 2, 1, 3, 6, 5, 7 };
 
