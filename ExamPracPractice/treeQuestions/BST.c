@@ -125,10 +125,26 @@ Tree insert(Tree t, int v) {
   return t;
 }
 
-Tree buildTree(Tree t, int* vals, int n) {
+Tree randInsert(Tree t, int v) {
+  if (t == NULL) {
+    t = malloc(sizeof(struct tree));
+    t->val = v;
+    t->right = NULL;
+    t->left = NULL;
+  } else {
+    if (rand() % 2) {
+      t->right = randInsert(t->right, v);
+    } else {
+      t->left = randInsert(t->left, v);
+    }
+  }
+  return t;
+}
+
+Tree buildTree(Tree t, int* vals, int n, Tree (*f)(Tree, int)) {
   int i = 0;
   for (i = 0; i < n; ++i) {
-    t = insert(t, vals[i]);
+    t = f(t, vals[i]);
   }
   return t;
 }

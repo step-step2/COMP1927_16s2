@@ -41,7 +41,7 @@ void findValTest2() {
   Tree t = createTree();
   int vals[] = { 1, 2, 3, 4, 5 };
 
-  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int), insert);
 
   assert(findValue(t, 0) == 0);
   assert(findValue(t, 1) == 1);
@@ -56,7 +56,7 @@ void findValTest3() {
   Tree t = createTree();
   int vals[] = { 4, 2, 1, 3, 6, 5, 7 };
 
-  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int), insert);
 
   assert(findValue(t, -1) == 0);
   assert(findValue(t, 1) == 1);

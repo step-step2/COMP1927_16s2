@@ -41,7 +41,7 @@ void kthSmallestTest1() {
   Tree t = createTree();
   int vals[] = { 1, 2, 3, 4, 5 };
 
-  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int), insert);
 
   kthSmallestTestTree(t, vals, sizeof(vals) / sizeof(int));
 }
@@ -50,7 +50,7 @@ void kthSmallestTest2() {
   Tree t = createTree();
   int vals[] = { 4, 2, 1, 3, 6, 5, 7 };
 
-  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int), insert);
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
   
@@ -61,7 +61,7 @@ void kthSmallestTest3() {
   Tree t = createTree();
   int vals[] = { 10, 5, 4, 3, 15, 13, 16, 17 };
   
-  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int), insert);
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
   
@@ -78,7 +78,7 @@ void kthSmallestTest4() {
     vals[i] = rand() - (RAND_MAX / 2);
   }
 
-  t = buildTree(t, vals, sizeof(vals) / sizeof(int));
+  t = buildTree(t, vals, sizeof(vals) / sizeof(int), insert);
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
   
