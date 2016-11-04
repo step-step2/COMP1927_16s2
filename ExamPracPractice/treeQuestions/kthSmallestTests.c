@@ -9,45 +9,45 @@
 #include <assert.h>
 
 // Test Methods
-void test1();
-void test2();
-void test3();
-void test4();
+void kthSmallestTest1();
+void kthSmallestTest2();
+void kthSmallestTest3();
+void kthSmallestTest4();
 
 // Helper
-void testTree(Tree t, int* vals, int n);
+void kthSmallestTestTree(Tree t, int* vals, int n);
 
-// test method
+// kthSmallestTest method
 void kthSmallestTests() {
-  void (*tests[])(void) = {
-    test1,
-    test2,
-    test3,
-    test4
+  void (*kthSmallestTests[])(void) = {
+    kthSmallestTest1,
+    kthSmallestTest2,
+    kthSmallestTest3,
+    kthSmallestTest4
   };
 
   printf("Running kthSmallestTests\n");
   unsigned long i = 0;
-  for (i = 0; i < sizeof(tests)/sizeof(void*); ++i) {
-    printf("Starting test %lu\n", i);
-    tests[i]();
-    printf("Congrats! Passed test %lu\n\n", i);
+  for (i = 0; i < sizeof(kthSmallestTests)/sizeof(void*); ++i) {
+    printf("Starting kthSmallestTest %lu\n", i);
+    kthSmallestTests[i]();
+    printf("Congrats! Passed kthSmallestTest %lu\n\n", i);
   }
   printf("Passed kthSmallestTests!\n");
 }
 
 /* Test Methods */
-void test1() {
+void kthSmallestTest1() {
   Tree t = createTree();
   int vals[] = { 1, 2, 3, 4, 5 };
 
   t = buildTree(t, vals, sizeof(vals) / sizeof(int));
 
-  testTree(t, vals, sizeof(vals) / sizeof(int));
+  kthSmallestTestTree(t, vals, sizeof(vals) / sizeof(int));
 }
 
-void test2() {
-  printf("Starting test2\n");
+void kthSmallestTest2() {
+  printf("Starting kthSmallestTest2\n");
   Tree t = createTree();
   int vals[] = { 4, 2, 1, 3, 6, 5, 7 };
 
@@ -55,12 +55,12 @@ void test2() {
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
   
-  testTree(t, vals, sizeof(vals) / sizeof(int));
-  printf("Congrats! Passed test2!\n\n");
+  kthSmallestTestTree(t, vals, sizeof(vals) / sizeof(int));
+  printf("Congrats! Passed kthSmallestTest2!\n\n");
 }
 
-void test3() {
-  printf("Starting test3\n");
+void kthSmallestTest3() {
+  printf("Starting kthSmallestTest3\n");
   Tree t = createTree();
   int vals[] = { 10, 5, 4, 3, 15, 13, 16, 17 };
   
@@ -68,12 +68,12 @@ void test3() {
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
   
-  testTree(t, vals, sizeof(vals) / sizeof(int));
-  printf("Congrats! Passed test3!\n\n");
+  kthSmallestTestTree(t, vals, sizeof(vals) / sizeof(int));
+  printf("Congrats! Passed kthSmallestTest3!\n\n");
 }
 
-void test4() {
-  printf("Starting test4\n");
+void kthSmallestTest4() {
+  printf("Starting kthSmallestTest4\n");
   Tree t = createTree();
   int vals[100] = { 0 };
 
@@ -87,13 +87,13 @@ void test4() {
 
   qsort(vals, sizeof(vals) / sizeof(int), sizeof(int), fun_sort);
   
-  testTree(t, vals, sizeof(vals) / sizeof(int));
-  printf("Congrats! Passed test4!\n\n");
+  kthSmallestTestTree(t, vals, sizeof(vals) / sizeof(int));
+  printf("Congrats! Passed kthSmallestTest4!\n\n");
 }
 
 
 /* Helper Methods */
-void testTree(Tree t, int* vals, int n) {
+void kthSmallestTestTree(Tree t, int* vals, int n) {
   int i = 0;
   int k = 0;
   int* v = NULL;
