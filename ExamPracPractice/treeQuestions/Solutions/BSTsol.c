@@ -59,7 +59,7 @@ int isBST(Tree t) {
   if (t->left != NULL && t->left->val > t->val) {
     return 0;
   }
-  if (t->right != NULL && t->right->val > t->val) {
+  if (t->right != NULL && t->right->val < t->val) {
     return 0;
   }
 
