@@ -141,10 +141,10 @@ Tree randInsert(Tree t, int v) {
   return t;
 }
 
-Tree buildTree(Tree t, int* vals, int n, Tree (*f)(Tree, int)) {
+Tree buildTree(Tree t, int* vals, int n, Tree (*insertF)(Tree, int)) {
   int i = 0;
   for (i = 0; i < n; ++i) {
-    t = f(t, vals[i]);
+    t = insertF(t, vals[i]);
   }
   return t;
 }

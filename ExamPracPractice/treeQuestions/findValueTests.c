@@ -14,7 +14,7 @@ void findValTest3();
 
 // 'main' method
 void findValTests() {
-  void (*findValTests[])(void) = {
+  void (*tests[])(void) = {
     findValTest1,
     findValTest2,
     findValTest3,
@@ -22,9 +22,9 @@ void findValTests() {
 
   printf("Running findValTests\n");
   unsigned long i = 0;
-  for (i = 0; i < sizeof(findValTests)/sizeof(void*); ++i) {
+  for (i = 0; i < sizeof(tests)/sizeof(void*); ++i) {
     printf("Starting findValTest %lu\n", i);
-    findValTests[i]();
+    tests[i]();
     printf("Congrats! Passed findValTest %lu\n\n", i);
   }
   printf("Passed findValTests!\n");

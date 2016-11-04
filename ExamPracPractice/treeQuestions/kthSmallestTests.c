@@ -19,7 +19,7 @@ void kthSmallestTestTree(Tree t, int* vals, int n);
 
 // kthSmallestTest method
 void kthSmallestTests() {
-  void (*kthSmallestTests[])(void) = {
+  void (*tests[])(void) = {
     kthSmallestTest1,
     kthSmallestTest2,
     kthSmallestTest3,
@@ -28,9 +28,9 @@ void kthSmallestTests() {
 
   printf("Running kthSmallestTests\n");
   unsigned long i = 0;
-  for (i = 0; i < sizeof(kthSmallestTests)/sizeof(void*); ++i) {
+  for (i = 0; i < sizeof(tests)/sizeof(void*); ++i) {
     printf("Starting kthSmallestTest %lu\n", i);
-    kthSmallestTests[i]();
+    tests[i]();
     printf("Congrats! Passed kthSmallestTest %lu\n\n", i);
   }
   printf("Passed kthSmallestTests!\n");
