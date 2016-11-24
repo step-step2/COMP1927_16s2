@@ -104,6 +104,15 @@ Tree createTree() {
   return NULL;
 }
 
+Tree createNode(int v) {
+  Tree t = malloc(sizeof(struct tree));
+  t->val = v;
+  t->right = NULL;
+  t->left = NULL;
+
+  return t;
+}
+
 void destroyTree(Tree t) {
   if (t == NULL) return;
   destroyTree(t->right);
@@ -113,10 +122,7 @@ void destroyTree(Tree t) {
 
 Tree insert(Tree t, int v) {
   if (t == NULL) {
-    t = malloc(sizeof(struct tree));
-    t->val = v;
-    t->right = NULL;
-    t->left = NULL;
+    t = createNode(v);
   } else {
     if (t->val < v) {
       t->right = insert(t->right, v);
@@ -129,10 +135,7 @@ Tree insert(Tree t, int v) {
 
 Tree randInsert(Tree t, int v) {
   if (t == NULL) {
-    t = malloc(sizeof(struct tree));
-    t->val = v;
-    t->right = NULL;
-    t->left = NULL;
+    t = createNode(v);
   } else {
     if (rand() % 2) {
       t->right = randInsert(t->right, v);
@@ -141,6 +144,25 @@ Tree randInsert(Tree t, int v) {
     }
   }
   return t;
+}
+
+Tree inOrderInsertHelper(Tree t, int v, int* done) {
+  if (*done == 1) return t;
+  if (t == NULL) {
+    *done = 1;
+    t = createNode(v);
+  } else {
+    t->left = inOrderInsertHelper(t->right, v, done);
+    t->right = inOrderInsertHelper(t->right, v, done);
+  }
+
+  return t;
+}
+
+// Insert in best possible place
+Tree inOrderInsert(Tree t, int v) {
+  int done = 0;
+  return inOrderInsertHelper(t, v, &done);
 }
 
 int getRootVal(Tree t) {
