@@ -175,10 +175,15 @@ Tree inOrderInsert(Tree t, int v) {
     // Walk over each node in the current level
     for (walk = 0; walk < (1 << p); ++walk) {
 
-      // Using goto's, #reckless, but legit this is an appropriate use of them
-      // A clean way to bounce out of a nested for loop
-      if (Q[walk]->left == NULL) goto found;
-      if (Q[walk]->right == NULL) goto found;
+      // If we found a node with an empty child
+      if (Q[walk]->left == NULL) {
+        Q[walk]->left = createNode(v);
+        return t;
+      }
+      if (Q[walk]->right == NULL) {
+        Q[walk]->right = createNode(v);
+        return t;
+      }
 
       temp[walk * 2] = Q[walk]->left;
       temp[walk * 2 + 1] = Q[walk]->right;
@@ -187,17 +192,6 @@ Tree inOrderInsert(Tree t, int v) {
   }
 
   // We never found an empty position
-  return t;
-
-found:
-  // At this point we know walk points to a parent node with either left or right
-  // being NULL, check which one then points out
-  if (Q[walk]->left == NULL) {
-    Q[walk]->left = createNode(v);
-  } else {
-    Q[walk]->right = createNode(v);
-  }
-
   return t;
 }
 
