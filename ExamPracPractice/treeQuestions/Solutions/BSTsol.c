@@ -41,35 +41,6 @@ int findValue(Tree t, int v) {
   return findValue(t->left, v) || findValue(t->right, v);
 }
 
-// Check to see if the given tree is actually a BST
-// The rule is that from some arbitrary root, the left child's value must be
-// smaller than the root, and the right child bigger
-// return 0 if it isn't a BST, 1 if it is
-int isBST(Tree t) {
-  // Base case, if our tree is empty, return that it is a BST
-  if (t == NULL) return 1;
-
-  // Check to see if our left and right branches are BST's
-  int leftBranch = isBST(t->left);
-  int rightBranch = isBST(t->right);
-  if (leftBranch == 0 || rightBranch == 0) {
-    return 0;
-  }
-
-  // Now we know that the left and right children are valid BST's
-  // We check our immediate root and children to see if they are valid
-  if (t->left != NULL && t->left->val > t->val) {
-    return 0;
-  }
-  if (t->right != NULL && t->right->val < t->val) {
-    return 0;
-  }
-
-  // All conditions pass, we can safely say that this whole tree under the root
-  // t is a valid BST!
-  return 1;
-}
-
 
 /*
  * Medium Questions
@@ -151,6 +122,51 @@ Tree lowestCommonAnc(Tree t, int v1, int v2) {
   // diverge down different branches, and we have found their lowest common
   // ancestor
   return t;
+}
+
+
+/*
+ * Hard Questions
+ */
+// Check to see if the given tree is actually a BST
+// The rule is that from some arbitrary root, the left child's value must be
+// smaller than the root, and the right child bigger
+// return 0 if it isn't a BST, 1 if it is
+// You are guaranteed no duplicates
+
+/*
+ * This Question is going to require a helper function. Checking that all values
+ * to the right and left of the current root is smaller is easy, but remembering
+ * that ALL values under the left of the root must be smaller (converse for right)
+ * is a bit more tricky. E.g.
+ *        5
+ *      /   \
+ *     0     X
+ *    / \
+ *   X   6
+ *
+ *  Is an INVALID BST; somehow 6 is to the left of 5
+ */
+
+// What we do is keep track of our running min and max under each subtree
+// For the above example, when exploring the 0 subtree, 5 is now our new 'max'
+int isBSTHelper(Tree t, int* min, int* max) {
+  // ez base case
+  if (t == NULL) return 1;
+
+  // We know t exists, we need to check that our current value is in between our min
+  // and max, and NOT equal to either of them
+  if (min != NULL && t->val <= *min) return 0;
+  if (max != NULL && t->val >= *max) return 0;
+
+  return isBSTHelper(t->left, min, &(t->val)) && isBSTHelper(t->right, &(t->val), max);
+}
+
+int isBST(Tree t) {
+  // Pass it to the method, we use NULL/pointer things as checks, because we have no way
+  // of knowing what range our values hold until we actually inspect them
+  // I.e. we cannot pass -1 for example because the root might be == -1 straight off
+  return isBSTHelper(t, NULL, NULL);
 }
 
 
