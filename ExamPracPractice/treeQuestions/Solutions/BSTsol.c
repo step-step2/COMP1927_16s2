@@ -162,6 +162,15 @@ Tree createTree() {
   return NULL;
 }
 
+Tree createNode(int v) {
+  Tree t = malloc(sizeof(struct tree));
+  t->val = v;
+  t->right = NULL;
+  t->left = NULL;
+
+  return t;
+}
+
 void destroyTree(Tree t) {
   if (t == NULL) return;
   destroyTree(t->right);
@@ -171,10 +180,7 @@ void destroyTree(Tree t) {
 
 Tree insert(Tree t, int v) {
   if (t == NULL) {
-    t = malloc(sizeof(struct tree));
-    t->val = v;
-    t->right = NULL;
-    t->left = NULL;
+    t = createNode(v);
   } else {
     if (t->val < v) {
       t->right = insert(t->right, v);
@@ -187,10 +193,7 @@ Tree insert(Tree t, int v) {
 
 Tree randInsert(Tree t, int v) {
   if (t == NULL) {
-    t = malloc(sizeof(struct tree));
-    t->val = v;
-    t->right = NULL;
-    t->left = NULL;
+    t = createNode(v);
   } else {
     if (rand() % 2) {
       t->right = randInsert(t->right, v);
@@ -201,15 +204,65 @@ Tree randInsert(Tree t, int v) {
   return t;
 }
 
+// Insert in shorted path possible place
+Tree inOrderInsert(Tree t, int v) {
+
+  if (t == NULL) {
+    return createNode(v);
+  }
+
+  // Max possible height we'll deal with is 6
+  Tree Q[64] = {};
+  Tree temp[64] = {};
+
+  // Current depth in Q
+  int p = 0;
+  int walk = 0;
+
+
+  Q[0] = t;
+
+  // For each level
+  for (p = 0; p < 6; ++p) {
+
+    // Walk over each node in the current level
+    for (walk = 0; walk <= (2 << p); ++walk) {
+
+      // Using goto's, #reckless, but legit this is an appropriate use of them
+      // I claim, a clean way to bounce out of a nested for loop
+      if (Q[walk]->left == NULL) goto found;
+      if (Q[walk]->right == NULL) goto found;
+
+      temp[walk * 2] = Q[walk]->left;
+      temp[walk * 2 + 1] = Q[walk]->right;
+    }
+    memcpy(Q, temp, sizeof(Tree) * 64);
+  }
+
+  // We never found an empty position
+  return t;
+
+found:
+  // At this point we know walk points to a parent node with either left or right
+  // being NULL, check which one then points out
+  if (Q[walk]->left == NULL) {
+    Q[walk]->left = createNode(v);
+  } else {
+    Q[walk]->right = createNode(v);
+  }
+
+  return t;
+}
+
 int getRootVal(Tree t) {
   assert(t != NULL);
   return t->val;
 }
 
-Tree buildTree(Tree t, int* vals, int n, Tree (*f)(Tree, int)) {
+Tree buildTree(Tree t, int* vals, int n, Tree (*insertF)(Tree, int)) {
   int i = 0;
   for (i = 0; i < n; ++i) {
-    t = f(t, vals[i]);
+    t = insertF(t, vals[i]);
   }
   return t;
 }
