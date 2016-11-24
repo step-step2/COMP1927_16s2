@@ -18,6 +18,7 @@ void isBSTTest2();
 void isBSTTest3();
 void isBSTTest4();
 void isBSTTest5();
+void isBSTTest6();
 
 // 'main' method
 void isBSTTests() {
@@ -26,7 +27,8 @@ void isBSTTests() {
     isBSTTest2,
     isBSTTest3,
     isBSTTest4,
-    isBSTTest5
+    isBSTTest5,
+    isBSTTest6
   };
 
   printf("Running isBSTTests\n");
@@ -90,5 +92,56 @@ void isBSTTest5() {
   assert(isBST(t) == 1);
 
   t = randInsert(t, 8);
+  assert(isBST(t) == 0);
+}
+
+
+void isBSTTest6() {
+  Tree t = createTree();
+  assert(isBST(t) == 1);
+
+  /*
+   *      5
+   *     / \
+   *    X   X
+   */
+  t = inOrderInsert(t, 5);
+  assert(isBST(t) == 1);
+
+
+  /*
+   *      5
+   *     / \
+   *    0   X
+   */
+  t = inOrderInsert(t, 0);
+  assert(isBST(t) == 1);
+
+  /*
+   *      5
+   *     / \
+   *    0   10
+   */
+  t = inOrderInsert(t, 10);
+  assert(isBST(t) == 1);
+
+  /*
+   *       5
+   *     /   \
+   *    0     10
+   *   / \    / \ 
+   *  -2  X  X   X
+   */
+  t = inOrderInsert(t, -2);
+  assert(isBST(t) == 1);
+
+  /*
+   *       5
+   *     /   \
+   *    0     10
+   *   / \    / \ 
+   *  -2  6  X   X
+   */
+  t = inOrderInsert(t, 6);
   assert(isBST(t) == 0);
 }

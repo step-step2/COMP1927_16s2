@@ -13,4 +13,5 @@ void destroyTree(Tree t);
 int getRootVal(Tree t);
 Tree insert(Tree t, int v);
 Tree randInsert(Tree t, int v);
+Tree inOrderInsert(Tree t, int v);
 Tree buildTree(Tree t, int* vals, int n, Tree (*f)(Tree, int));
