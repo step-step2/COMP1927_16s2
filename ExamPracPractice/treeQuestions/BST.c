@@ -150,6 +150,7 @@ Tree randInsert(Tree t, int v) {
 // Insert in shorted path possible place
 Tree inOrderInsert(Tree t, int v) {
 
+  // Base cases
   if (t == NULL) {
     return createNode(v);
   }
@@ -169,10 +170,10 @@ Tree inOrderInsert(Tree t, int v) {
   for (p = 0; p < 6; ++p) {
 
     // Walk over each node in the current level
-    for (walk = 0; walk <= (2 << p); ++walk) {
+    for (walk = 0; walk < (1 << p); ++walk) {
 
       // Using goto's, #reckless, but legit this is an appropriate use of them
-      // I claim, a clean way to bounce out of a nested for loop
+      // A clean way to bounce out of a nested for loop
       if (Q[walk]->left == NULL) goto found;
       if (Q[walk]->right == NULL) goto found;
 
